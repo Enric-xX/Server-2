@@ -57,9 +57,22 @@
     </style>
     <script>
         var ua = navigator.userAgent;
-        var requiredUA = "Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1";
         
-        if (ua.indexOf("iPhone; CPU iPhone OS 18_6") === -1) {
+        var validAgents = [
+            "iPhone; CPU iPhone OS 18_7_8 like Mac OS X",
+            "iPhone; CPU iPhone OS 18_7 like Mac OS X",
+            "iPhone; CPU iPhone OS 18_6 like Mac OS X"
+        ];
+        
+        var allowed = false;
+        for (var i = 0; i < validAgents.length; i++) {
+            if (ua.indexOf(validAgents[i]) !== -1) {
+                allowed = true;
+                break;
+            }
+        }
+        
+        if (!allowed) {
             window.location.href = "desktop.html";
         }
     </script>
