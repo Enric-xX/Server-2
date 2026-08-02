@@ -1,1 +1,20 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OnlyPhone</title>
+    <script>
+        // Detect if mobile
+        var isMobile = /Android|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent);
+        
+        if (!isMobile) {
+            // Redirect desktop users
+            window.location.href = "desktop.html";
+        }
+    </script>
+</head>
+<body>
+    <h1>📱 Welcome to OnlyPhone</h1>
+    <p>Exclusive mobile content.</p>
+    <p>Flag 1: flag{user_agent_bypass_success}</p>
+</body>
+</html>
