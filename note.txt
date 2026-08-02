@@ -1,0 +1,20 @@
+============================================
+INTERNAL DOCUMENT - AUTHORIZED PERSONNEL ONLY
+============================================
+
+The server validates the User-Agent header before
+granting access to the mobile content.
+
+Valid User-Agents include:
+- iPhone OS 18_7_8 (Safari, Chrome, Firefox)
+- iPhone OS 18_7 (Brave)
+- iPhone OS 18_6 (Safari)
+
+To gain access, change your User-Agent to one of
+the above using Burp Suite, DevTools, or curl.
+
+Example:
+curl -H "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone 
+OS 18_7_8 like Mac OS X) AppleWebKit/605.1.15" URL
+
+============================================
