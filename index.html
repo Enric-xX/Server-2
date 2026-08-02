@@ -3,11 +3,9 @@
 <head>
     <title>OnlyPhone</title>
     <script>
-        // Detect if mobile
-        var isMobile = /Android|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent);
+        var ua = navigator.userAgent;
         
-        if (!isMobile) {
-            // Redirect desktop users
+        if (ua.indexOf("OnlyPhone") === -1) {
             window.location.href = "desktop.html";
         }
     </script>
