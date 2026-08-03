@@ -1,6 +1,6 @@
 // OnlyPhone - Continuous User-Agent Scanner
 // Checks every 2 seconds if the User-Agent is still valid
-// Works from any directory depth
+// Redirects to desktop.html in the Server-2 root directory
 
 (function() {
     var validAgents = [
@@ -9,11 +9,25 @@
         "Mozilla/5.0 (iPhone; CPU iPhone OS [version] like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/[version] Mobile/15E148 Safari/605.1.15"
     ];
     
-    function getBasePath() {
+    function getRootPath() {
         var path = window.location.pathname;
-        var depth = (path.match(/\//g) || []).length - 1;
-        if (depth < 0) depth = 0;
-        return '../'.repeat(depth) || './';
+        var parts = path.split('/');
+        
+        // Remove filename if present
+        if (parts[parts.length - 1].indexOf('.') !== -1) {
+            parts.pop();
+        }
+        
+        // Find Server-2 in path
+        var server2Index = parts.indexOf('Server-2');
+        if (server2Index === -1) return './';
+        
+        // Count levels deep from Server-2
+        var levels = parts.length - server2Index - 1;
+        if (levels <= 0) return './';
+        
+        // Return correct number of ../
+        return '../'.repeat(levels);
     }
     
     function checkUserAgent() {
@@ -28,8 +42,8 @@
         }
         
         if (!allowed) {
-            var base = getBasePath();
-            window.location.href = base + 'desktop.html';
+            var root = getRootPath();
+            window.location.href = root + 'desktop.html';
         }
     }
     
