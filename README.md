@@ -1,6 +1,11 @@
 # Server #2 - OnlyPhone
 
 Plataforma móvil exclusiva vulnerable para practicar bug bounty, User-Agent bypass, directory listing y CVE assessment.
+
+---
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/72bf83bd-9cd2-4f89-b409-236d51436d8f" />
+
 ---
 
 ## Estructura
