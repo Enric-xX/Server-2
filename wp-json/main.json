@@ -1,0 +1,62 @@
+{
+  "name": "OnlyPhone",
+  "description": "The most exclusive mobile platform",
+  "url": "https://onlyphone.local",
+  "home": "https://onlyphone.local",
+  "version": "2.0.1",
+  "environment": "production",
+  "debug_mode": false,
+  "timezone": "UTC",
+  "admin_email": "admin@onlyphone.local",
+  "language": "en_US",
+  "routes": {
+    "/wp/v2/users": {
+      "methods": ["GET"],
+      "description": "List all registered users",
+      "authentication": "not_required"
+    },
+    "/wp/v2/posts": {
+      "methods": ["GET"],
+      "description": "List all posts (public and private)",
+      "authentication": "not_required"
+    },
+    "/wp/v2/pages": {
+      "methods": ["GET"],
+      "description": "List all pages (public and private)",
+      "authentication": "not_required"
+    },
+    "/admin-panel/": {
+      "methods": ["GET", "POST"],
+      "description": "Administration panel",
+      "authentication": "required"
+    },
+    "/dev-beta/": {
+      "methods": ["GET"],
+      "description": "Developer beta access",
+      "authentication": "required"
+    },
+    "/backups/": {
+      "methods": ["GET"],
+      "description": "Internal backup directory",
+      "authentication": "required"
+    }
+  },
+  "server": {
+    "software": "Apache/2.4.41 (Ubuntu)",
+    "php_version": "7.2.18",
+    "mysql_version": "5.7.34",
+    "os": "Linux onlyphone-server 5.4.0-81-generic"
+  },
+  "security": {
+    "ssl_enabled": true,
+    "waf_enabled": false,
+    "directory_listing": "enabled",
+    "xmlrpc_enabled": true,
+    "debug_log_public": true,
+    "backups_exposed": true,
+    "admin_panel_moved": true,
+    "old_admin_path": "/admin/",
+    "new_admin_path": "/admin-panel/",
+    "internal_note": "flag{main_json_info_disclosure}"
+  }
+}
