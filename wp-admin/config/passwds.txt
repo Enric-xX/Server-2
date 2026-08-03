@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>passwords.txt</title>
+    <script src="../../detect.js"></script>
+    <style>
+        body {
+            background: #ffffff;
+            color: #000000;
+            font-family: 'Courier New', monospace;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 { border-bottom: 2px solid #000; padding-bottom: 10px; }
+        .warning { color: #cc0000; }
+    </style>
+</head>
+<body>
+    <h1>============================================</h1>
+    <h1>SYSTEM PASSWORDS - ROT13 ENCRYPTED</h1>
+    <h1>============================================</h1>
+
+    <p class="warning">⚠ INTERNAL DOCUMENT - DO NOT SHARE</p>
+
+    <pre>
+[USERS]
+root    : BaylCubar2026!
+admin   : nqzvav1289
+www-data: jjj-qngn
+    </pre>
+
+    <hr>
+
+    <p><strong>Note:</strong> All passwords are encrypted with ROT13 cipher.</p>
+    <p><strong>Decrypt manually</strong> or use: <code>tr 'A-Za-z' 'N-ZA-Mn-za-m'</code></p>
+
+</body>
+</html>
