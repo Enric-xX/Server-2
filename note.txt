@@ -6,9 +6,12 @@ The server validates the User-Agent header before
 granting access to the mobile content.
 
 Valid User-Agents include:
-- iPhone OS 18_7_8 (Safari, Chrome, Firefox)
-- iPhone OS 18_7 (Brave)
-- iPhone OS 18_6 (Safari)
+- Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/146.0.7680.38 Mobile/15E148 Safari/604.1
+
+- Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Brave/1 Mobile/15E148 Safari/604.1
+
+- Mozilla/5.0 (iPhone; CPU iPhone OS [version] like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/[version] Mobile/15E148 Safari/605.1.15
+
 
 To gain access, change your User-Agent to one of
 the above using Burp Suite, DevTools, or curl.
