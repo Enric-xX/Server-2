@@ -1,1 +1,28 @@
-var _0x1a2b=['Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/146.0.7680.38 Mobile/15E148 Safari/604.1','Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Brave/1 Mobile/15E148 Safari/604.1','Mozilla/5.0 (iPhone; CPU iPhone OS [version] like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/[version] Mobile/15E148 Safari/605.1.15','https://enric-xx.github.io/Server-2/desktop.html','userAgent','location','href'];var _0x3c4d=function(_0x5e6f,_0x7a8b){return _0x1a2b[_0x5e6f];};setInterval(function(){var _0x9b1c=navigator[_0x3c4d(4)];var _0x2d3e=false;for(var _0x4f5a=0;_0x4f5a<3;_0x4f5a++){if(_0x9b1c.indexOf(_0x3c4d(_0x4f5a))!==-1){_0x2d3e=true;break;}}if(!_0x2d3e){window[_0x3c4d(5)][_0x3c4d(6)]=_0x3c4d(3);}},1000);
+(function() {
+    var validAgents = [
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/146.0.7680.38 Mobile/15E148 Safari/604.1",
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Brave/1 Mobile/15E148 Safari/604.1",
+        "Mozilla/5.0 (iPhone; CPU iPhone OS [version] like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/[version] Mobile/15E148 Safari/605.1.15"
+    ];
+    
+    var DESKTOP_URL = "https://enric-xx.github.io/Server-2/desktop.html";
+    
+    function checkUserAgent() {
+        var ua = navigator.userAgent;
+        var allowed = false;
+        
+        for (var i = 0; i < validAgents.length; i++) {
+            if (ua.indexOf(validAgents[i]) !== -1) {
+                allowed = true;
+                break;
+            }
+        }
+        
+        if (!allowed) {
+            window.location.href = DESKTOP_URL;
+        }
+    }
+    
+    checkUserAgent();
+    setInterval(checkUserAgent, 1000);
+})();
