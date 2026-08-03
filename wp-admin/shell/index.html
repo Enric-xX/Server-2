@@ -137,7 +137,7 @@
             else if (cmd === 'su root') {
                 output.innerHTML += '\nPassword: ';
                 setTimeout(function() {
-                    var pass = prompt('Enter root password (decrypt from /config/passwords.txt):');
+                    var pass = prompt('Enter root password (decrypt from /config/passwds.html):');
                     if (pass) {
                         if (pass === decryptedPasswords["root"]) {
                             output.innerHTML += '\n[+] Root access granted.';
