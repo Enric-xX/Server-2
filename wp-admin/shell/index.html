@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OnlyPhone - System Shell</title>
+    <script src="../detect.js"></script>
+    <style>
+        body {
+            background: #0a0e14;
+            color: #c9d1d9;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .terminal {
+            background: #0d1117;
+            border: 1px solid #21262d;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 400px;
+        }
+        .output {
+            color: #58a6ff;
+            margin-bottom: 10px;
+            white-space: pre-wrap;
+        }
+        .cmd {
+            color: #3fb950;
+        }
+        .input-line {
+            display: flex;
+            align-items: center;
+        }
+        .prompt {
+            color: #3fb950;
+            margin-right: 10px;
+        }
+        input[type="text"] {
+            background: transparent;
+            border: none;
+            color: #c9d1d9;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            width: 100%;
+            outline: none;
+        }
+        .flag-box {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #0d1117;
+            border: 1px solid #3fb950;
+            border-radius: 8px;
+        }
+        .flag-box.show { display: block; }
+        .flag-box code {
+            color: #3fb950;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>🖥️ OnlyPhone Shell v1.0</h1>
+    
+    <div class="terminal">
+        <div class="output" id="output">
+[+] Connected to onlyphone.local
+[+] User: www-data
+[+] Type 'help' for available commands
+        </div>
+        <div class="input-line">
+            <span class="prompt">www-data@onlyphone:~$</span>
+            <input type="text" id="cmdInput" onkeydown="if(event.key==='Enter')executeCommand()" autofocus>
+        </div>
+    </div>
+
+    <div id="flagBox" class="flag-box">
+        <h2 style="color:#3fb950;">✅ Access Granted</h2>
+        <p style="color:#8b949e;">Root password accepted.</p>
+        <p><strong>Flag 4:</strong> <code>flag{shell_access_root}</code></p>
+    </div>
+
+    <script>
+        var output = document.getElementById('output');
+        var input = document.getElementById('cmdInput');
+        
+        function rot13(str) {
+            return str.replace(/[a-zA-Z]/g, function(c) {
+                return String.fromCharCode(
+                    (c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26
+                );
+            });
+        }
+        
+        var decryptedPasswords = {
+            "root": rot13("BaylCubar2026!"),
+            "admin": rot13("nqzvav1289"),
+            "www-data": rot13("jjj-qngn")
+        };
+        
+        function executeCommand() {
+            var cmd = input.value.trim().toLowerCase();
+            input.value = '';
+            
+            output.innerHTML += '\n<span class="prompt">www-data@onlyphone:~$</span> <span class="cmd">' + cmd + '</span>';
+            
+            if (cmd === 'help') {
+                output.innerHTML += '\n[+] Available commands:\n' +
+                    '  help     - Show this help\n' +
+                    '  ls       - List files\n' +
+                    '  whoami   - Show current user\n' +
+                    '  id       - Show user ID\n' +
+                    '  pwd      - Show current directory\n' +
+                    '  cat      - Read a file\n' +
+                    '  su       - Switch user\n' +
+                    '  clear    - Clear screen\n' +
+                    '  exit     - Disconnect';
+            }
+            else if (cmd === 'ls') {
+                output.innerHTML += '\nconfig.php  database.sql  flag.txt';
+            }
+            else if (cmd === 'whoami') {
+                output.innerHTML += '\nwww-data';
+            }
+            else if (cmd === 'id') {
+                output.innerHTML += '\nuid=33(www-data) gid=33(www-data) groups=33(www-data)';
+            }
+            else if (cmd === 'pwd') {
+                output.innerHTML += '\n/var/www/onlyphone';
+            }
+            else if (cmd === 'cat config.php') {
+                output.innerHTML += '\n&lt;?php\n// Database Configuration\n// Passwords are ROT13 encrypted\n// See /etc/passwd for more info\n?&gt;\n\n<i style="color:#8b949e;">Hint: Check /config/ for password files.</i>';
+            }
+            else if (cmd === 'cat flag.txt') {
+                output.innerHTML += '\nPermission denied. Try switching to root.';
+            }
+            else if (cmd === 'su root') {
+                output.innerHTML += '\nPassword: ';
+                setTimeout(function() {
+                    var pass = prompt('Enter root password (decrypt from /config/passwords.txt):');
+                    if (pass) {
+                        if (pass === decryptedPasswords["root"]) {
+                            output.innerHTML += '\n[+] Root access granted.';
+                            output.innerHTML += '\nroot@onlyphone:~# cat flag.txt';
+                            document.getElementById('flagBox').classList.add('show');
+                            document.getElementById('flagBox').scrollIntoView();
+                        } else {
+                            output.innerHTML += '\n[-] Incorrect password.';
+                            output.innerHTML += '\n<i style="color:#8b949e;">Hint: Check /config/passwords.txt for ROT13 passwords.</i>';
+                        }
+                    }
+                }, 500);
+            }
+            else if (cmd === 'clear') {
+                output.innerHTML = '[+] Screen cleared.';
+            }
+            else if (cmd === 'exit') {
+                output.innerHTML += '\n[+] Connection closed.';
+            }
+            else if (cmd !== '') {
+                output.innerHTML += '\n[-] Command not found: ' + cmd;
+            }
+            
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+    </script>
+</body>
+</html>
