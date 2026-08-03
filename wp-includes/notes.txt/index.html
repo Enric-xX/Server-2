@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>internal-notes.txt</title>
+    <style>
+        body {
+            background: #ffffff;
+            color: #000000;
+            font-family: 'Courier New', monospace;
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        h1 {
+            font-size: 1.2em;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        .warning {
+            color: #cc0000;
+            font-weight: bold;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>============================================</h1>
+    <h1>INTERNAL NOTES - AUTHORIZED PERSONNEL ONLY</h1>
+    <h1>============================================</h1>
+
+    <p><span class="warning">⚠ DO NOT SHARE OUTSIDE THE DEV TEAM</span></p>
+
+    <p><strong>Date:</strong> August 2, 2026</p>
+    <p><strong>Author:</strong> developer_onlyphone</p>
+    <p><strong>Subject:</strong> Security Tasks Before Launch</p>
+
+    <hr>
+
+    <h2>Pending Tasks:</h2>
+
+    <ol>
+        <li><strong>Move the backups folder</strong> before launch.<br>
+            Current location: <code>/wp-content/backups/</code><br>
+            <span class="warning">⚠ Currently publicly accessible!</span></li>
+
+        <li><strong>Admin panel</strong> has been moved to <code>/admin-panel/</code>.<br>
+            Old <code>/admin/</code> directory should be deleted.</li>
+
+        <li><strong>Directory listing</strong> is enabled on the server.<br>
+            <span class="warning">⚠ This exposes our file structure to attackers.</span></li>
+
+        <li><strong>Debug mode</strong> was enabled during development.<br>
+            Check <code>/wp-content/debug.log</code> and disable before launch.</li>
+
+        <li><strong>API endpoints</strong> are not authenticated.<br>
+            Anyone can access <code>/wp-json/wp/v2/users</code> and see our team.</li>
+    </ol>
+
+    <hr>
+
+    <h2>Credentials (TEMPORARY):</h2>
+    <p>Dev environment only. Change before production.</p>
+    <p><strong>User:</strong> admin_onlyphone</p>
+    <p><strong>Pass:</strong> OnlyPhone2026! (temporary)</p>
+
+    <hr>
+
+    <h2>Flag:</h2>
+    <p><code>flag{directory_listing_exposed}</code></p>
+
+    <div class="footer">
+        <p>OnlyPhone Inc. - Internal Document</p>
+        <p>If found, please contact security@onlyphone.local</p>
+    </div>
+</body>
+</html>
