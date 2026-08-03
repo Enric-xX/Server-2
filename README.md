@@ -29,7 +29,7 @@ Plataforma móvil exclusiva vulnerable para practicar bug bounty, User-Agent byp
 
 ## Writeup
 
-Lee el writeup completo en Medium: *Server-2: OnlyPhone — CTF Walkthrough (4 Flags)* *(próximamente)*
+Lee el writeup completo en Medium: [Server-2: Vulnerable OnlyPhone— VulnerabilityWeb Walkthrough (4 Flags)](https://enric-xx.medium.com/server-2-vulnerable-onlyphone-vulnerabilityweb-walkthrough-4-flags-1d8f37389507)
 
 ---
 
