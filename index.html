@@ -70,28 +70,7 @@
             background: #1d4ed8;
         }
     </style>
-    <script>
-        var ua = navigator.userAgent;
-        
-        var validAgents = [
-            "iPhone; CPU iPhone OS 18_7",
-            "iPhone; CPU iPhone OS 18_6",
-            "iPhone; CPU iPhone OS 18_0",
-            "iPhone; CPU iPhone OS"
-        ];
-        
-        var allowed = false;
-        for (var i = 0; i < validAgents.length; i++) {
-            if (ua.indexOf(validAgents[i]) !== -1) {
-                allowed = true;
-                break;
-            }
-        }
-        
-        if (!allowed) {
-            window.location.href = "desktop.html";
-        }
-    </script>
+    <script src="detect.js"></script>
 </head>
 <body>
     <div class="container">
