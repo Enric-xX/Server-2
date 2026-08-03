@@ -46,6 +46,7 @@
             border: 1px solid #3fb950;
             border-radius: 8px;
             padding: 20px;
+            margin-bottom: 20px;
         }
         .flag-box p { color: #8b949e; margin: 0 0 5px 0; font-size: 0.85em; }
         .flag-box code {
@@ -54,14 +55,29 @@
             word-break: break-all;
             font-family: 'Courier New', monospace;
         }
+        .cve-btn {
+            display: inline-block;
+            background: #2563eb;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .cve-btn:hover {
+            background: #1d4ed8;
+        }
     </style>
     <script>
         var ua = navigator.userAgent;
         
         var validAgents = [
-            "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/146.0.7680.38 Mobile/15E148 Safari/604.1",
-            "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Brave/1 Mobile/15E148 Safari/604.1",
-            "Mozilla/5.0 (iPhone; CPU iPhone OS [version] like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/[version] Mobile/15E148 Safari/605.1.15"
+            "iPhone; CPU iPhone OS 18_7",
+            "iPhone; CPU iPhone OS 18_6",
+            "iPhone; CPU iPhone OS 18_0",
+            "iPhone; CPU iPhone OS"
         ];
         
         var allowed = false;
@@ -102,6 +118,8 @@
             <p>🎯 Flag 1</p>
             <code>flag{user_agent_bypass_success}</code>
         </div>
+
+        <a href="CVE-VULN/" class="cve-btn">🔍 Vulnerability Scanner</a>
     </div>
 </body>
 </html>
